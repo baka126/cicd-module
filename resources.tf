@@ -82,7 +82,7 @@ resource "aws_lb" "example_alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.example_sg.id]
-  subnets            = ["subnet-0f97b0bb45cdeb3b7","subnet-0cd1b0c6e27ef5b97","subnet-0029ff8bc7242c7c1"]
+  subnets            = ["subnet-example1_id","subnet-example2_id","subnet-example3_id"]
 }
 
 # ALB Target Group
@@ -90,7 +90,7 @@ resource "aws_lb_target_group" "example_tg" {
   name     = "example-tg"
   port     = 8080
   protocol = "HTTP"
-  vpc_id   = "vpc-03d964f7cd3fa2c74"
+  vpc_id   = "vpc-example_id"
 
 health_check {
   enabled             = true
@@ -144,7 +144,7 @@ resource "aws_autoscaling_group" "example_asg" {
   desired_capacity     = 2
   max_size             = 3
   min_size             = 0
-  vpc_zone_identifier  = ["subnet-0f97b0bb45cdeb3b7","subnet-0cd1b0c6e27ef5b97","subnet-0029ff8bc7242c7c1"]
+  vpc_zone_identifier  = ["subnet-","subnet-","subnet-"]
   launch_template {
     id      = aws_launch_template.example_lt.id
     version = "$Latest"
@@ -180,7 +180,7 @@ resource "aws_autoscaling_policy" "scale_down" {
 # S3 Bucket
 resource "aws_s3_bucket" "mybucket" {
   #checkov:skip=CKV_AWS_144: "Ensure that S3 bucket has cross-region replication enabled"
-  bucket = "adex-cicd-demo"
+  bucket = "example-cicd-demo"
 }
 
 # Enable Versioning
