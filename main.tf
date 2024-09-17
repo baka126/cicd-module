@@ -23,8 +23,8 @@ module "ci_cd" {
 
   #cloudwatch log
   cloudwatch_logs = {
-    group_name  = "adex-cicd-log"
-    stream_name = "adex-cicd-stream"
+    group_name  = "cicd-log"
+    stream_name = "cicd-stream"
     status      = "ENABLED"
   }
 
